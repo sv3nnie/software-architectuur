@@ -27,6 +27,6 @@ class MovieTicket {
   }
 
   toString(): String {
-    return "MovieTicket";
+    return "";
   }
 }

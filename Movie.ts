@@ -8,6 +8,6 @@ class Movie {
   addScreening(screening: MovieScreening): void {}
 
   toString() {
-    return this.title;
+    return "";
   }
 }

@@ -8,10 +8,10 @@ class MovieScreening {
   }
 
   getPricePerSeat(): Number {
-    return this.pricePerSeat;
+    return 0;
   }
 
   toString(): String {
-    return "MovieScreening";
+    return "";
   }
 }

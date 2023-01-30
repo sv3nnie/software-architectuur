@@ -9,7 +9,7 @@ class Order {
   }
 
   getOrderNr(): Number {
-    return this.orderNr;
+    return 0;
   }
 
   addSeatReservation(ticket: MovieTicket): void {
@@ -17,7 +17,7 @@ class Order {
   }
 
   calculatePrice(): Number {
-    return this.ticket.getPrice();
+    return 0;
   }
 
   export(exportFormat: TicketExportFormat): void {
