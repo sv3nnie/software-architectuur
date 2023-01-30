@@ -3,10 +3,12 @@ import { Movie } from "./Movie";
 export class MovieScreening {
   private dateAndTime: Date;
   private pricePerSeat: number;
+  private movie: Movie;
 
   constructor(dateAndTime: Date, pricePerSeat: number, movie: Movie) {
     this.dateAndTime = dateAndTime;
     this.pricePerSeat = pricePerSeat;
+    this.movie = movie;
   }
 
   getPricePerSeat(): number {
@@ -18,6 +20,6 @@ export class MovieScreening {
   }
 
   toString(): String {
-    return this.dateAndTime.toLocaleDateString() + " " + this.pricePerSeat + " euros";
+    return this.movie.toString() + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
   }
 }

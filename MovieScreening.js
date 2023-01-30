@@ -5,6 +5,7 @@ var MovieScreening = /** @class */ (function () {
     function MovieScreening(dateAndTime, pricePerSeat, movie) {
         this.dateAndTime = dateAndTime;
         this.pricePerSeat = pricePerSeat;
+        this.movie = movie;
     }
     MovieScreening.prototype.getPricePerSeat = function () {
         return this.pricePerSeat;
@@ -13,7 +14,7 @@ var MovieScreening = /** @class */ (function () {
         return this.dateAndTime;
     };
     MovieScreening.prototype.toString = function () {
-        return this.dateAndTime.toLocaleDateString() + " " + this.pricePerSeat + " euros";
+        return this.movie.toString() + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
     };
     return MovieScreening;
 }());
