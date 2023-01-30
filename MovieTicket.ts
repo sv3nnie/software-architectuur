@@ -1,35 +1,33 @@
 import { MovieScreening } from "./MovieScreening";
 
 export class MovieTicket {
-  private rowNr: Number;
-  private seatNr: Number;
-  private isPremium: Boolean;
+  private seatRow: number;
+  private seatNr: number;
+  private isPremium: boolean;
   private movieScreening: MovieScreening;
 
-  constructor(
-    rowNr: Number,
-    seatNr: Number,
-    isPremium: Boolean,
-    movieScreening: MovieScreening
-  ) {
-    this.rowNr = rowNr;
+  constructor(seatRow: number, seatNr: number, isPremium: boolean, movieScreening: MovieScreening) {
+    this.movieScreening = movieScreening;
+    this.seatRow = seatRow;
     this.seatNr = seatNr;
     this.isPremium = isPremium;
   }
 
-  isPremiumTicket(): Boolean {
-    if (this.isPremium) {
-      return true;
-    } else {
-      return false;
-    }
+  isPremiumTicket(): boolean {
+    return this.isPremium;
   }
 
   getPrice() {
-    return 0;
+    // get the price per seat from the movie screening
+    return this.movieScreening.getPricePerSeat();
   }
 
-  toString(): String {
-    return "";
+  // get the date and time of the movie screening
+  getDateAndTime(): Date {
+    return this.movieScreening.getDateAndTime();
+  }
+
+  toString(): string {
+    return "Seat " + this.seatRow + "-" + this.seatNr + " (" + this.movieScreening.toString() + ")";
   }
 }

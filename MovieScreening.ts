@@ -2,18 +2,22 @@ import { Movie } from "./Movie";
 
 export class MovieScreening {
   private dateAndTime: Date;
-  private pricePerSeat: Number;
+  private pricePerSeat: number;
 
-  constructor(dateAndTime: Date, pricePerSeat: Number, movie: Movie) {
+  constructor(dateAndTime: Date, pricePerSeat: number, movie: Movie) {
     this.dateAndTime = dateAndTime;
     this.pricePerSeat = pricePerSeat;
   }
 
-  getPricePerSeat(): Number {
-    return 0;
+  getPricePerSeat(): number {
+    return this.pricePerSeat;
+  }
+
+  getDateAndTime(): Date {
+    return this.dateAndTime;
   }
 
   toString(): String {
-    return "";
+    return this.dateAndTime.toLocaleDateString() + " " + this.pricePerSeat + " euros";
   }
 }
