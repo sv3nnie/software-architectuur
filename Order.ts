@@ -1,10 +1,10 @@
 import { MovieTicket } from "./MovieTicket";
 import { TicketExportFormat } from "./TicketExportFormat";
+import * as fs from "fs";
 
 export class Order {
   private orderNr: number;
   private isStudentOrder: boolean;
-  private ticket: MovieTicket;
   private tickets = new Array<MovieTicket>();
 
   constructor(orderNr: number, isStudentOrder: boolean) {
@@ -45,13 +45,32 @@ export class Order {
     return totalPrice;
   }
 
+  toString(): string {
+    let result = "Order " + this.orderNr + " (" + (this.isStudentOrder ? "student" : "regular") + ")\n";
+    for (let ticket of this.tickets) {
+      result += ticket.toString() + "\n";
+    }
+    result += "Total price: " + this.calculatePrice() + " euros";
+    return result;
+  }
+
   export(exportFormat: TicketExportFormat): void {
     switch (exportFormat) {
       case TicketExportFormat.PLAINTEXT:
         console.log("Exporting order in plain text format");
+        // export the order in plain text format
+        fs.writeFileSync("order.txt", this.toString());
         break;
       case TicketExportFormat.JSON:
         console.log("Exporting order in JSON format");
+        // export the order in JSON format and also add the total price
+        let json = {
+          orderNr: this.orderNr,
+          isStudentOrder: this.isStudentOrder,
+          tickets: this.tickets,
+          totalPrice: this.calculatePrice(),
+        };
+        fs.writeFileSync("order.json", JSON.stringify(json));
         break;
     }
   }

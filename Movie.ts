@@ -2,7 +2,7 @@ import { MovieScreening } from "./MovieScreening";
 
 export class Movie {
   private title: string;
-  private screenings: MovieScreening[];
+  private screenings: MovieScreening[] = [];
 
   constructor(title: string) {
     this.title = title;
