@@ -1,4 +1,6 @@
-class MovieScreening {
+import { Movie } from "./Movie";
+
+export class MovieScreening {
   private dateAndTime: Date;
   private pricePerSeat: Number;
 

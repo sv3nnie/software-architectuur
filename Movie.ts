@@ -1,4 +1,6 @@
-class Movie {
+import { MovieScreening } from "./MovieScreening";
+
+export class Movie {
   private title: String;
 
   constructor(title: String) {

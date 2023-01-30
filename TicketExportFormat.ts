@@ -1,4 +1,4 @@
-enum TicketExportFormat {
+export enum TicketExportFormat {
   PLAINTEXT,
   JSON,
 }

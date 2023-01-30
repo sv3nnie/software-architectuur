@@ -1,7 +1,10 @@
-class MovieTicket {
+import { MovieScreening } from "./MovieScreening";
+
+export class MovieTicket {
   private rowNr: Number;
   private seatNr: Number;
   private isPremium: Boolean;
+  private movieScreening: MovieScreening;
 
   constructor(
     rowNr: Number,
