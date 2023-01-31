@@ -27,6 +27,18 @@ export class MovieTicket {
     return this.movieScreening.getDateAndTime();
   }
 
+  getSeatRow(): number {
+    return this.seatRow;
+  }
+
+  getSeatNr(): number {
+    return this.seatNr;
+  }
+
+  getMovieTitle(): string {
+    return this.movieScreening.getMovie().toString();
+  }
+
   toString(): string {
     return "Seat " + this.seatRow + "-" + this.seatNr + " (" + this.movieScreening.toString() + ")";
   }

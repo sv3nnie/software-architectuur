@@ -6,13 +6,15 @@ export class Movie {
 
   constructor(title: string) {
     this.title = title;
+    this.screenings = [];
   }
 
   addScreening(screening: MovieScreening): void {
+    // add screening to moviescreenings
     this.screenings.push(screening);
   }
 
   toString() {
-    return this.title + " (" + this.screenings.length + " screenings)";
+    return this.title;
   }
 }

@@ -19,6 +19,15 @@ var MovieTicket = /** @class */ (function () {
     MovieTicket.prototype.getDateAndTime = function () {
         return this.movieScreening.getDateAndTime();
     };
+    MovieTicket.prototype.getSeatRow = function () {
+        return this.seatRow;
+    };
+    MovieTicket.prototype.getSeatNr = function () {
+        return this.seatNr;
+    };
+    MovieTicket.prototype.getMovieTitle = function () {
+        return this.movieScreening.getMovie().toString();
+    };
     MovieTicket.prototype.toString = function () {
         return "Seat " + this.seatRow + "-" + this.seatNr + " (" + this.movieScreening.toString() + ")";
     };

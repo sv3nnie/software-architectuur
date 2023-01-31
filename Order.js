@@ -8,6 +8,7 @@ var Order = /** @class */ (function () {
         this.tickets = new Array();
         this.orderNr = orderNr;
         this.isStudentOrder = isStudentOrder;
+        this.tickets = [];
     }
     Order.prototype.getOrderNr = function () {
         return this.orderNr;
@@ -58,14 +59,25 @@ var Order = /** @class */ (function () {
                 break;
             case TicketExportFormat_1.TicketExportFormat.JSON:
                 console.log("Exporting order in JSON format");
-                // export the order in JSON format and also add the total price
-                var json = {
-                    orderNr: this.orderNr,
-                    isStudentOrder: this.isStudentOrder,
-                    tickets: this.tickets,
-                    totalPrice: this.calculatePrice()
-                };
-                fs.writeFileSync("order.json", JSON.stringify(json));
+                // export the order in JSON format and remove any circular references
+                var json = JSON.stringify(this, function (key, value) {
+                    if (key == "tickets") {
+                        return value.map(function (ticket) {
+                            return {
+                                movieTitle: ticket.getMovieTitle(),
+                                dateAndTime: ticket.getDateAndTime(),
+                                row: ticket.getSeatRow(),
+                                seat: ticket.getSeatNr(),
+                                isPremiumTicket: ticket.isPremiumTicket(),
+                                price: ticket.getPrice()
+                            };
+                        });
+                    }
+                    return value;
+                });
+                // add total price to bottom of JSON
+                json = json.substring(0, json.length - 1) + ', "totalPrice": ' + this.calculatePrice() + "}";
+                fs.writeFileSync("order.json", json);
                 break;
         }
     };

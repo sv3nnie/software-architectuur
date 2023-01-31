@@ -13,8 +13,11 @@ var MovieScreening = /** @class */ (function () {
     MovieScreening.prototype.getDateAndTime = function () {
         return this.dateAndTime;
     };
+    MovieScreening.prototype.getMovie = function () {
+        return this.movie;
+    };
     MovieScreening.prototype.toString = function () {
-        return this.movie.toString() + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
+        return this.movie + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
     };
     return MovieScreening;
 }());

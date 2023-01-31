@@ -5,12 +5,14 @@ var Movie = /** @class */ (function () {
     function Movie(title) {
         this.screenings = [];
         this.title = title;
+        this.screenings = [];
     }
     Movie.prototype.addScreening = function (screening) {
+        // add screening to moviescreenings
         this.screenings.push(screening);
     };
     Movie.prototype.toString = function () {
-        return this.title + " (" + this.screenings.length + " screenings)";
+        return this.title;
     };
     return Movie;
 }());

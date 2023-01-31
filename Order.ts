@@ -10,6 +10,7 @@ export class Order {
   constructor(orderNr: number, isStudentOrder: boolean) {
     this.orderNr = orderNr;
     this.isStudentOrder = isStudentOrder;
+    this.tickets = [];
   }
 
   getOrderNr(): number {
@@ -63,14 +64,25 @@ export class Order {
         break;
       case TicketExportFormat.JSON:
         console.log("Exporting order in JSON format");
-        // export the order in JSON format and also add the total price
-        let json = {
-          orderNr: this.orderNr,
-          isStudentOrder: this.isStudentOrder,
-          tickets: this.tickets,
-          totalPrice: this.calculatePrice(),
-        };
-        fs.writeFileSync("order.json", JSON.stringify(json));
+        // export the order in JSON format and remove any circular references
+        let json = JSON.stringify(this, (key, value) => {
+          if (key == "tickets") {
+            return value.map((ticket: MovieTicket) => {
+              return {
+                movie: ticket.getMovieTitle(),
+                dateAndTime: ticket.getDateAndTime(),
+                row: ticket.getSeatRow(),
+                seat: ticket.getSeatNr(),
+                isPremiumTicket: ticket.isPremiumTicket(),
+                price: ticket.getPrice(),
+              };
+            });
+          }
+          return value;
+        });
+        // add total price to bottom of JSON
+        json = json.substring(0, json.length - 1) + ', "totalPrice": ' + this.calculatePrice() + "}";
+        fs.writeFileSync("order.json", json);
         break;
     }
   }

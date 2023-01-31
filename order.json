@@ -1,1 +1,12 @@
-{"orderNr":1,"isStudentOrder":false,"tickets":[{"movieScreening":{"dateAndTime":"2023-01-30T19:45:20.012Z","pricePerSeat":10,"movie":{"screenings":[],"title":"The Matrix"}},"seatRow":1,"seatNr":1,"isPremium":false},{"movieScreening":{"dateAndTime":"2023-01-30T19:45:20.012Z","pricePerSeat":10,"movie":{"screenings":[],"title":"The Matrix"}},"seatRow":1,"seatNr":2,"isPremium":false},{"movieScreening":{"dateAndTime":"2023-01-30T19:45:20.012Z","pricePerSeat":10,"movie":{"screenings":[],"title":"The Matrix"}},"seatRow":1,"seatNr":3,"isPremium":false},{"movieScreening":{"dateAndTime":"2023-01-30T19:45:20.012Z","pricePerSeat":10,"movie":{"screenings":[],"title":"The Matrix"}},"seatRow":1,"seatNr":4,"isPremium":false},{"movieScreening":{"dateAndTime":"2023-01-30T19:45:20.012Z","pricePerSeat":10,"movie":{"screenings":[],"title":"The Matrix"}},"seatRow":1,"seatNr":5,"isPremium":false}],"totalPrice":30}
+{
+  "tickets": [
+    { "movieTitle": "The Matrix 2", "dateAndTime": "2023-01-31T12:09:49.917Z", "row": 1, "seat": 1, "isPremiumTicket": false, "price": 10 },
+    { "movieTitle": "The Matrix 2", "dateAndTime": "2023-01-31T12:09:49.917Z", "row": 1, "seat": 2, "isPremiumTicket": false, "price": 10 },
+    { "movieTitle": "The Matrix 2", "dateAndTime": "2023-01-31T12:09:49.917Z", "row": 1, "seat": 3, "isPremiumTicket": true, "price": 10 },
+    { "movieTitle": "The Matrix 2", "dateAndTime": "2023-01-31T12:09:49.917Z", "row": 1, "seat": 4, "isPremiumTicket": true, "price": 10 },
+    { "movieTitle": "The Matrix 2", "dateAndTime": "2023-01-31T12:09:49.917Z", "row": 1, "seat": 5, "isPremiumTicket": true, "price": 10 }
+  ],
+  "orderNr": 1,
+  "isStudentOrder": false,
+  "totalPrice": 36
+}

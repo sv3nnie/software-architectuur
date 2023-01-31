@@ -19,7 +19,11 @@ export class MovieScreening {
     return this.dateAndTime;
   }
 
+  getMovie(): Movie {
+    return this.movie;
+  }
+
   toString(): String {
-    return this.movie.toString() + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
+    return this.movie + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
   }
 }
