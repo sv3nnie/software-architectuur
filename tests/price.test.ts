@@ -1,5 +1,4 @@
 import { expect } from "chai";
-// import all required classes like order, ticket, etc.
 import { Movie } from "../src/Movie";
 import { MovieScreening } from "../src/MovieScreening";
 import { MovieTicket } from "../src/MovieTicket";
@@ -8,8 +7,7 @@ import { TicketExportFormat } from "../src/TicketExportFormat";
 import moment from "moment";
 
 describe("Ticket price calculation", () => {
-  // check if second ticket is free for students
-  it("goeie title hier", () => {
+  it("Second ticket should be free", () => {
     const movie = new Movie("The Matrix");
     const screening = new MovieScreening(new Date(), 10, movie);
     movie.addScreening(screening);
@@ -18,18 +16,8 @@ describe("Ticket price calculation", () => {
     order.addSeatReservation(new MovieTicket(1, 2, false, screening));
     expect(order.calculatePrice()).to.equal(10);
   });
-  // check if second ticket is NOT free for non-students on a saturday
-  it("goeie title hier", () => {
-    const movie = new Movie("The Matrix");
-    const screening = new MovieScreening(moment().day(6).toDate(), 10, movie);
-    movie.addScreening(screening);
-    const order = new Order(1, false);
-    order.addSeatReservation(new MovieTicket(1, 1, false, screening));
-    order.addSeatReservation(new MovieTicket(1, 2, false, screening));
-    expect(order.calculatePrice()).to.equal(20);
-  });
-  // check if second ticket is free for non-students on a monday
-  it("goeie title hier", () => {
+
+  it("Second ticket should be free for non-students on a monday", () => {
     const movie = new Movie("The Matrix");
     const screening = new MovieScreening(moment().day(1).toDate(), 10, movie);
     movie.addScreening(screening);
@@ -37,5 +25,62 @@ describe("Ticket price calculation", () => {
     order.addSeatReservation(new MovieTicket(1, 1, false, screening));
     order.addSeatReservation(new MovieTicket(1, 2, false, screening));
     expect(order.calculatePrice()).to.equal(10);
+  });
+
+  describe("Second tickets should be free on weekends", () => {
+    it("Second ticket should be free on a friday for students", () => {
+      const movie = new Movie("The Matrix");
+      const screening = new MovieScreening(moment().day(5).toDate(), 10, movie);
+      movie.addScreening(screening);
+      const order = new Order(1, true);
+      order.addSeatReservation(new MovieTicket(1, 1, false, screening));
+      order.addSeatReservation(new MovieTicket(1, 2, false, screening));
+      expect(order.calculatePrice()).to.equal(10);
+    });
+    it("Second ticket should be free on a saturday for students", () => {
+      const movie = new Movie("The Matrix");
+      const screening = new MovieScreening(moment().day(6).toDate(), 10, movie);
+      movie.addScreening(screening);
+      const order = new Order(1, true);
+      order.addSeatReservation(new MovieTicket(1, 1, false, screening));
+      order.addSeatReservation(new MovieTicket(1, 2, false, screening));
+      expect(order.calculatePrice()).to.equal(10);
+    });
+    it("Second ticket should be free on a sunday for students", () => {
+      const movie = new Movie("The Matrix");
+      const screening = new MovieScreening(moment().day(0).toDate(), 10, movie);
+      movie.addScreening(screening);
+      const order = new Order(1, true);
+      order.addSeatReservation(new MovieTicket(1, 1, false, screening));
+      order.addSeatReservation(new MovieTicket(1, 2, false, screening));
+      expect(order.calculatePrice()).to.equal(10);
+    });
+    it("Second ticket should not be free on a friday for non-students", () => {
+      const movie = new Movie("The Matrix");
+      const screening = new MovieScreening(moment().day(5).toDate(), 10, movie);
+      movie.addScreening(screening);
+      const order = new Order(1, false);
+      order.addSeatReservation(new MovieTicket(1, 1, false, screening));
+      order.addSeatReservation(new MovieTicket(1, 2, false, screening));
+      expect(order.calculatePrice()).to.equal(20);
+    });
+    it("Second ticket should not be free on a saturday for non-students", () => {
+      const movie = new Movie("The Matrix");
+      const screening = new MovieScreening(moment().day(6).toDate(), 10, movie);
+      movie.addScreening(screening);
+      const order = new Order(1, false);
+      order.addSeatReservation(new MovieTicket(1, 1, false, screening));
+      order.addSeatReservation(new MovieTicket(1, 2, false, screening));
+      expect(order.calculatePrice()).to.equal(20);
+    });
+    it("Second ticket should not be free on a sunday for non-students", () => {
+      const movie = new Movie("The Matrix");
+      const screening = new MovieScreening(moment().day(0).toDate(), 10, movie);
+      movie.addScreening(screening);
+      const order = new Order(1, false);
+      order.addSeatReservation(new MovieTicket(1, 1, false, screening));
+      order.addSeatReservation(new MovieTicket(1, 2, false, screening));
+      expect(order.calculatePrice()).to.equal(20);
+    });
   });
 });
