@@ -192,4 +192,132 @@ describe("Discount price calulation", () => {
       expect(order.calculatePrice()).to.equal(50);
     });
   });
+
+  describe("Premium ticket price calculation", () => {
+    describe("Student premium ticket prices", () => {
+      it("Ticket prices should be 2 euros more per ticket than non-premium ones", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(new Date(), 10, movie);
+        movie.addScreening(screening);
+        const order = new Order(1, true);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        expect(order.calculatePrice()).to.equal(12);
+      });
+
+      it("Ticket prices should be 2 euros more than usual and should give the 10% discount on Friday", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(
+          moment().day(5).toDate(),
+          10,
+          movie
+        );
+        movie.addScreening(screening);
+        const order = new Order(1, true);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 3, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 4, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 5, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 6, true, screening));
+        expect(order.calculatePrice()).to.equal(63);
+      });
+      it("Ticket prices should be 2 euros more than usual and should give the 10% discount on Saturday", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(
+          moment().day(6).toDate(),
+          10,
+          movie
+        );
+        movie.addScreening(screening);
+        const order = new Order(1, true);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 3, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 4, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 5, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 6, true, screening));
+        expect(order.calculatePrice()).to.equal(63);
+      });
+      it("Ticket prices should be 2 euros more than usual and should give the 10% discount on Sunday", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(
+          moment().day(0).toDate(),
+          10,
+          movie
+        );
+        movie.addScreening(screening);
+        const order = new Order(1, true);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 3, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 4, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 5, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 6, true, screening));
+        expect(order.calculatePrice()).to.equal(63);
+      });
+    });
+    describe("Non-student premium ticket prices", () => {
+      it("Ticketprices should be 3 more euros per ticket than normal ones", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(new Date(), 10, movie);
+        movie.addScreening(screening);
+        const order = new Order(1, true);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        expect(order.calculatePrice()).to.equal(13);
+      });
+      it("Ticket prices should be 3 euros more than usual and should give the 10% discount on Friday", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(
+          moment().day(5).toDate(),
+          10,
+          movie
+        );
+        movie.addScreening(screening);
+        const order = new Order(1, false);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 3, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 4, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 5, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 6, true, screening));
+        expect(order.calculatePrice()).to.equal(72);
+      });
+      it("Ticket prices should be 3 euros more than usual and should give the 10% discount on Saturday", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(
+          moment().day(6).toDate(),
+          10,
+          movie
+        );
+        movie.addScreening(screening);
+        const order = new Order(1, false);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 3, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 4, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 5, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 6, true, screening));
+        expect(order.calculatePrice()).to.equal(72);
+      });
+      it("Ticket prices should be 3 euros more than usual and should give the 10% discount on Sunday", () => {
+        const movie = new Movie("The Matrix");
+        const screening = new MovieScreening(
+          moment().day(0).toDate(),
+          10,
+          movie
+        );
+        movie.addScreening(screening);
+        const order = new Order(1, false);
+        order.addSeatReservation(new MovieTicket(1, 1, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 2, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 3, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 4, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 5, true, screening));
+        order.addSeatReservation(new MovieTicket(1, 6, true, screening));
+        expect(order.calculatePrice()).to.equal(72);
+      });
+    });
+  });
 });
