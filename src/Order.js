@@ -64,7 +64,7 @@ var Order = /** @class */ (function () {
                     if (key == "tickets") {
                         return value.map(function (ticket) {
                             return {
-                                movieTitle: ticket.getMovieTitle(),
+                                movie: ticket.getMovieTitle(),
                                 dateAndTime: ticket.getDateAndTime(),
                                 row: ticket.getSeatRow(),
                                 seat: ticket.getSeatNr(),
