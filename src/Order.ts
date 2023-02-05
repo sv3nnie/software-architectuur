@@ -27,13 +27,29 @@ export class Order {
     for (let ticket of this.tickets) {
       let ticketPrice = ticket.getPrice();
       // if ticket is premium and it is a student order, add 2 to price, otherwise add 3
-      ticketPrice += ticket.isPremiumTicket() ? (this.isStudentOrder ? 2 : 3) : 0;
+      ticketPrice += ticket.isPremiumTicket()
+        ? this.isStudentOrder
+          ? 2
+          : 3
+        : 0;
       // every second ticket is free for students
-      if (this.isStudentOrder && this.tickets.indexOf(ticket) % 2 == 1) continue;
+      if (this.isStudentOrder && this.tickets.indexOf(ticket) % 2 == 1)
+        continue;
       // if it is monday, tuesday, wednesday or thursday, every second ticket for non-students is free
-      if (!this.isStudentOrder && this.tickets.indexOf(ticket) % 2 == 1 && ticket.getDateAndTime().getDay() >= 1 && ticket.getDateAndTime().getDay() <= 4) continue;
+      if (
+        !this.isStudentOrder &&
+        this.tickets.indexOf(ticket) % 2 == 1 &&
+        ticket.getDateAndTime().getDay() >= 1 &&
+        ticket.getDateAndTime().getDay() <= 4
+      )
+        continue;
       // if it is friday, saturday or sunday, give a 10% discount if a non-student has equal or more than 6 tickets
-      if (!this.isStudentOrder && this.tickets.length >= 6 && ticket.getDateAndTime().getDay() >= 5 && ticket.getDateAndTime().getDay() == 0) {
+      if (
+        !this.isStudentOrder &&
+        this.tickets.length >= 6 &&
+        (ticket.getDateAndTime().getDay() >= 5 ||
+          ticket.getDateAndTime().getDay() == 0)
+      ) {
         totalPrice += ticketPrice * 0.9;
         continue;
       }
@@ -43,7 +59,12 @@ export class Order {
   }
 
   toString(): string {
-    let result = "Order " + this.orderNr + " (" + (this.isStudentOrder ? "student" : "regular") + ")\n";
+    let result =
+      "Order " +
+      this.orderNr +
+      " (" +
+      (this.isStudentOrder ? "student" : "regular") +
+      ")\n";
     for (let ticket of this.tickets) {
       result += ticket.toString() + "\n";
     }
@@ -77,7 +98,11 @@ export class Order {
           return value;
         });
         // add total price to bottom of JSON
-        json = json.substring(0, json.length - 1) + ', "totalPrice": ' + this.calculatePrice() + "}";
+        json =
+          json.substring(0, json.length - 1) +
+          ', "totalPrice": ' +
+          this.calculatePrice() +
+          "}";
         fs.writeFileSync("order.json", json);
         break;
     }

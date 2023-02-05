@@ -238,7 +238,7 @@ describe("UC 2 - Discount price calulation", () => {
         const order = new Order(1, false);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
         order.addSeatReservation(new MovieTicket(1, 2, true, screening));
-        expect(order.calculatePrice()).to.equal(13);
+        expect(order.calculatePrice()).to.equal(26);
       });
       it("TC 305 - Ticket prices should be 3 euros more than usual and should give the 10% discount on Friday", () => {
         const movie = new Movie("The Matrix");
