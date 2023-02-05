@@ -193,7 +193,7 @@ describe("UC 2 - Discount price calulation", () => {
         order.addSeatReservation(new MovieTicket(1, 4, true, screening));
         order.addSeatReservation(new MovieTicket(1, 5, true, screening));
         order.addSeatReservation(new MovieTicket(1, 6, true, screening));
-        expect(order.calculatePrice()).to.equal(63);
+        expect(order.calculatePrice()).to.equal(36);
       });
       it("TC 302 - Ticket prices should be 2 euros more than usual and should give the 10% discount on Saturday", () => {
         const movie = new Movie("The Matrix");
@@ -210,7 +210,7 @@ describe("UC 2 - Discount price calulation", () => {
         order.addSeatReservation(new MovieTicket(1, 4, true, screening));
         order.addSeatReservation(new MovieTicket(1, 5, true, screening));
         order.addSeatReservation(new MovieTicket(1, 6, true, screening));
-        expect(order.calculatePrice()).to.equal(63);
+        expect(order.calculatePrice()).to.equal(36);
       });
       it("TC 303 - Ticket prices should be 2 euros more than usual and should give the 10% discount on Sunday", () => {
         const movie = new Movie("The Matrix");
@@ -227,7 +227,7 @@ describe("UC 2 - Discount price calulation", () => {
         order.addSeatReservation(new MovieTicket(1, 4, true, screening));
         order.addSeatReservation(new MovieTicket(1, 5, true, screening));
         order.addSeatReservation(new MovieTicket(1, 6, true, screening));
-        expect(order.calculatePrice()).to.equal(63);
+        expect(order.calculatePrice()).to.equal(36);
       });
     });
     describe("Non-student premium ticket prices", () => {
@@ -235,7 +235,7 @@ describe("UC 2 - Discount price calulation", () => {
         const movie = new Movie("The Matrix");
         const screening = new MovieScreening(new Date(), 10, movie);
         movie.addScreening(screening);
-        const order = new Order(1, true);
+        const order = new Order(1, false);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
         order.addSeatReservation(new MovieTicket(1, 2, true, screening));
         expect(order.calculatePrice()).to.equal(13);
@@ -255,7 +255,7 @@ describe("UC 2 - Discount price calulation", () => {
         order.addSeatReservation(new MovieTicket(1, 4, true, screening));
         order.addSeatReservation(new MovieTicket(1, 5, true, screening));
         order.addSeatReservation(new MovieTicket(1, 6, true, screening));
-        expect(order.calculatePrice()).to.equal(72);
+        expect(order.calculatePrice()).to.equal(70.2);
       });
       it("TC 306 - Ticket prices should be 3 euros more than usual and should give the 10% discount on Saturday", () => {
         const movie = new Movie("The Matrix");
@@ -272,7 +272,7 @@ describe("UC 2 - Discount price calulation", () => {
         order.addSeatReservation(new MovieTicket(1, 4, true, screening));
         order.addSeatReservation(new MovieTicket(1, 5, true, screening));
         order.addSeatReservation(new MovieTicket(1, 6, true, screening));
-        expect(order.calculatePrice()).to.equal(72);
+        expect(order.calculatePrice()).to.equal(70.2);
       });
       it("TC 307 - Ticket prices should be 3 euros more than usual and should give the 10% discount on Sunday", () => {
         const movie = new Movie("The Matrix");
@@ -289,7 +289,7 @@ describe("UC 2 - Discount price calulation", () => {
         order.addSeatReservation(new MovieTicket(1, 4, true, screening));
         order.addSeatReservation(new MovieTicket(1, 5, true, screening));
         order.addSeatReservation(new MovieTicket(1, 6, true, screening));
-        expect(order.calculatePrice()).to.equal(72);
+        expect(order.calculatePrice()).to.equal(70.2);
       });
     });
   });
