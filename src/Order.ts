@@ -33,7 +33,7 @@ export class Order {
       // if it is monday, tuesday, wednesday or thursday, every second ticket for non-students is free
       if (!this.isStudentOrder && this.tickets.indexOf(ticket) % 2 == 1 && ticket.getDateAndTime().getDay() >= 1 && ticket.getDateAndTime().getDay() <= 4) continue;
       // if it is friday, saturday or sunday, give a 10% discount if a non-student has equal or more than 6 tickets
-      if (!this.isStudentOrder && this.tickets.length >= 6 && ticket.getDateAndTime().getDay() >= 5 && ticket.getDateAndTime().getDay() <= 7) {
+      if (!this.isStudentOrder && this.tickets.length >= 6 && (ticket.getDateAndTime().getDay() >= 5 || ticket.getDateAndTime().getDay() == 0)) {
         totalPrice += ticketPrice * 0.9;
         continue;
       }

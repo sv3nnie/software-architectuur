@@ -1,12 +1,1 @@
-{
-  "tickets": [
-    { "movie": "The Matrix 2", "dateAndTime": "2023-01-31T12:11:59.057Z", "row": 1, "seat": 1, "isPremiumTicket": false, "price": 10 },
-    { "movie": "The Matrix 2", "dateAndTime": "2023-01-31T12:11:59.057Z", "row": 1, "seat": 2, "isPremiumTicket": false, "price": 10 },
-    { "movie": "The Matrix 2", "dateAndTime": "2023-01-31T12:11:59.057Z", "row": 1, "seat": 3, "isPremiumTicket": true, "price": 10 },
-    { "movie": "The Matrix 2", "dateAndTime": "2023-01-31T12:11:59.057Z", "row": 1, "seat": 4, "isPremiumTicket": true, "price": 10 },
-    { "movie": "The Matrix 2", "dateAndTime": "2023-01-31T12:11:59.057Z", "row": 1, "seat": 5, "isPremiumTicket": true, "price": 10 }
-  ],
-  "orderNr": 1,
-  "isStudentOrder": false,
-  "totalPrice": 36
-}
+{"tickets":[{"movie":"The Matrix 2","dateAndTime":"2023-02-06T16:13:08.034Z","row":1,"seat":1,"isPremiumTicket":false,"price":10},{"movie":"The Matrix 2","dateAndTime":"2023-02-06T16:13:08.034Z","row":1,"seat":2,"isPremiumTicket":false,"price":10},{"movie":"The Matrix 2","dateAndTime":"2023-02-06T16:13:08.034Z","row":1,"seat":3,"isPremiumTicket":true,"price":10},{"movie":"The Matrix 2","dateAndTime":"2023-02-06T16:13:08.034Z","row":1,"seat":4,"isPremiumTicket":true,"price":10},{"movie":"The Matrix 2","dateAndTime":"2023-02-06T16:13:08.034Z","row":1,"seat":5,"isPremiumTicket":true,"price":10}],"orderNr":1,"isStudentOrder":false, "totalPrice": 36}
