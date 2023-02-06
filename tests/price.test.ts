@@ -180,11 +180,7 @@ describe("UC 2 - Discount price calulation", () => {
 
       it("TC 301 - Ticket prices should be 2 euros more than usual and should give the 10% discount on Friday", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(
-          moment().day(5).toDate(),
-          10,
-          movie
-        );
+        const screening = new MovieScreening(moment().day(5).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, true);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
@@ -197,11 +193,7 @@ describe("UC 2 - Discount price calulation", () => {
       });
       it("TC 302 - Ticket prices should be 2 euros more than usual and should give the 10% discount on Saturday", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(
-          moment().day(6).toDate(),
-          10,
-          movie
-        );
+        const screening = new MovieScreening(moment().day(6).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, true);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
@@ -214,11 +206,7 @@ describe("UC 2 - Discount price calulation", () => {
       });
       it("TC 303 - Ticket prices should be 2 euros more than usual and should give the 10% discount on Sunday", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(
-          moment().day(0).toDate(),
-          10,
-          movie
-        );
+        const screening = new MovieScreening(moment().day(0).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, true);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
@@ -233,7 +221,7 @@ describe("UC 2 - Discount price calulation", () => {
     describe("Non-student premium ticket prices", () => {
       it("TC 304 - Ticketprices should be 3 more euros per ticket than normal ones", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(new Date(), 10, movie);
+        const screening = new MovieScreening(moment().day(0).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, false);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
@@ -242,11 +230,7 @@ describe("UC 2 - Discount price calulation", () => {
       });
       it("TC 305 - Ticket prices should be 3 euros more than usual and should give the 10% discount on Friday", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(
-          moment().day(5).toDate(),
-          10,
-          movie
-        );
+        const screening = new MovieScreening(moment().day(5).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, false);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
@@ -259,11 +243,7 @@ describe("UC 2 - Discount price calulation", () => {
       });
       it("TC 306 - Ticket prices should be 3 euros more than usual and should give the 10% discount on Saturday", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(
-          moment().day(6).toDate(),
-          10,
-          movie
-        );
+        const screening = new MovieScreening(moment().day(6).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, false);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
@@ -276,11 +256,7 @@ describe("UC 2 - Discount price calulation", () => {
       });
       it("TC 307 - Ticket prices should be 3 euros more than usual and should give the 10% discount on Sunday", () => {
         const movie = new Movie("The Matrix");
-        const screening = new MovieScreening(
-          moment().day(0).toDate(),
-          10,
-          movie
-        );
+        const screening = new MovieScreening(moment().day(0).toDate(), 10, movie);
         movie.addScreening(screening);
         const order = new Order(1, false);
         order.addSeatReservation(new MovieTicket(1, 1, true, screening));
