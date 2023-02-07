@@ -23,7 +23,7 @@ export class MovieScreening {
     return this.movie;
   }
 
-  toString(): String {
+  toString(): string {
     return this.movie + " " + this.dateAndTime.toLocaleString() + " €" + this.pricePerSeat;
   }
 }

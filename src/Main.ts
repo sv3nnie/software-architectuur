@@ -16,3 +16,4 @@ order.addSeatReservation(new MovieTicket(1, 4, false, screening));
 order.addSeatReservation(new MovieTicket(1, 5, false, screening));
 order.addSeatReservation(new MovieTicket(1, 6, false, screening));
 console.log(order.calculatePrice());
+order.export(TicketExportFormat.PLAINTEXT);
