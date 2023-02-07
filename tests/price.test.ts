@@ -3,7 +3,6 @@ import { Movie } from "../src/Movie";
 import { MovieScreening } from "../src/MovieScreening";
 import { MovieTicket } from "../src/MovieTicket";
 import { Order } from "../src/Order";
-import { TicketExportFormat } from "../src/TicketExportFormat";
 import moment from "moment";
 
 describe("UC 1 - Second ticket price calculation", () => {
